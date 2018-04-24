@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100i" rel="stylesheet">
+    <style>
+        .current_weather {
+            height: 14em;
+            width: 25em;
+            border: 1px solid #9b9b9b;
+            padding-left: 20px;
+            float: left;
+            font-family: 'IBM Plex Sans', sans-serif;
+            -webkit-box-shadow: 7px 6px 10px -4px rgba(166,166,166,1);
+            -moz-box-shadow: 7px 6px 10px -4px rgba(166,166,166,1);
+            box-shadow: 7px 6px 10px -4px rgba(166,166,166,1);
+        }
+        .forecast {
+            float: left;
+            border: 1px solid #9b9b9b;
+            margin-left: 10px;
+            text-align:center;
+            -webkit-box-shadow: 7px 6px 10px -4px rgba(166,166,166,1);
+            -moz-box-shadow: 7px 6px 10px -4px rgba(166,166,166,1);
+            box-shadow: 7px 6px 10px -4px rgba(166,166,166,1);
+
+        }
+        .forecast h1 {
+            font-weight: bold;
+            font-family: 'IBM Plex Sans', sans-serif;
+
+        }
+        .content {
+          width: 80%;
+          display: block;
+          margin-top: 2em;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        form {
+            margin-bottom: 10px;
+        }
+        .title {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: bold;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="content">
+        <h1 class="title">Simple Weather</h1>
+        <form action="/forecast" method="get">
+            <input type="text" name="city" placeholder="Your city name">
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="current_weather">
+            <h1>Weather in {{ city }}, {{ country }}</h1>
+            <h1><img src="http://openweathermap.org/img/w/{{ icon }}.png"> {{ temp }} &#8457; </h1>
+            <h2>{{ description }}</h2>
+        </div>
+
+        <div class="forecast">
+            <h1> Daily weather and forecasts in {{city}}, {{country}}</h1>
+            <img src="data:image/png;base64, {{ plot_url }}">
+        </div>
+    </div>
+
+
+</body>
+</html>
